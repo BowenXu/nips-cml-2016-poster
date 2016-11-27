@@ -7,3 +7,5 @@
 *.fdb_latexmk
 *.ps
 *.DS_Store
+*.bbl
+*.blg

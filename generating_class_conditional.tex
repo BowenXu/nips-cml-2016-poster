@@ -209,7 +209,7 @@
 \mysection{Previous Work}
 % 
 % approach, due to Nguyen et.\ al.\ \cite{Nguyen2016}, 
-A previous approach due to Nguyen et.\ al. uses gradient-based optimization of images to do approximate 
+A previous approach due to Nguyen et.\ al.\ \cite{Nguyen2016} uses gradient-based optimization of images to do approximate 
 % \emph{maximum a posteriori probability}
  MAP estimation, synthesizing large (227 x 227) class-conditional images.\\
 % \begin{minipage}
@@ -279,7 +279,7 @@ We adopted:
 % 
 \mysection{Automatically Evaluating Image Quality}
 
-A discriminator, trained on ImageNet, outputs the probability of an image being natural versus synthesized.\\
+A discriminator trained on ImageNet \cite{Radford2015}, outputs the probability of an image being natural versus synthesized.\\
 
 \begin{minipage}[c]{1\columnwidth}
         \centering
@@ -366,6 +366,13 @@ A discriminator, trained on ImageNet, outputs the probability of an image being 
 % \hspace{-1.0cm}
 
 \mysection{Bibliography}
+\small
+\begingroup
+\renewcommand{\section}[2]{}%
+\bibliography{bib}
+\endgroup
+\bibliographystyle{ieeetr}
+
 \vspace{1.5cm}
  \begin{center}
 \begin{minipage}[c]{0.2\columnwidth}
