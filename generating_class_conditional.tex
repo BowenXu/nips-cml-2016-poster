@@ -90,7 +90,7 @@
 %  \begin{center}
     \vspace{-.18in}
     \includegraphics[width=8cm,trim=9em 0em 9em 0em, clip]{badges/toronto}
-   	\hspace{35cm}
+   	% \hspace{35cm}
       \includegraphics{badges/uot_text.png}
 %University of Cambridge 
 %  \end{center}
@@ -110,7 +110,8 @@
 %
 %
 %%% Title
-\begin{minipage}[c][9cm][c]{0.9\textwidth}
+\hspace{-5.0cm}
+\begin{minipage}[c][9cm][c]{0.94\textwidth}
   \begin{center}
     \vspace{3.5cm}
     {\sffamily \VeryHuge \textbf{Generating Class-conditional Images\\\vspace{5.0mm} with Gradient-based Inference}}\\[10mm]
@@ -182,7 +183,7 @@
 \mysection{Main idea}
 %
 % 
-\vspace{0.5in}
+\vspace{0.2in}
 % 
 % \begin{minipage}[c]{1\columnwidth}
 \begin{itemize}
@@ -264,7 +265,7 @@ We adopted:
 \newpage 
 
 \mysection{Experiments and Results}
- \vspace{-0.2cm}
+ \vspace{-0.05cm}
 \begin{align*}
 % \input{figures/semicylinder}\label{fig:cylinder}
 % \begin{figure}[h]
@@ -298,14 +299,14 @@ A discriminator trained on ImageNet \cite{Radford2015}, outputs the probability 
 
 \newpage
 \mysection{Diversity of Image Contents}
-	
+\vspace{-0.5cm}
 \begin{align*}
 % \input{figures/semicylinder}\label{fig:cylinder}
 % \begin{figure}[h]
 % 
   %\includegraphics[width=\textwidth]{ComparisonImagebyImage_wo_clipping}
    % \hspace{-1.0cm}
-   \hspace{0.8cm}
+   % \hspace{0.8cm}
   \includegraphics[width=33cm,keepaspectratio=false]{figures/moreRepresentative}
   % [scale=0.5725]
   % \caption{Images generated with MAP, MALA, and HMC.}
@@ -338,7 +339,7 @@ A discriminator trained on ImageNet \cite{Radford2015}, outputs the probability 
 		\setlength\itemsep{0.4em}
 		\item Use the Hamiltonian Variational Inference (HVI) model.
 		\item Generate images from text.
-		\item Generate other media such as sound and text.
+		\item Generate other media such as sound and video.
  	\end{itemize}
 % %\begin{figure}[t!]
 % 	\centering
