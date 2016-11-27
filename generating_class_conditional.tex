@@ -1,0 +1,418 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% From a template maintained at https://github.com/jamesrobertlloyd/cbl-tikz-poster
+%
+% Code near the top should be fairly standard and not need to be changed
+%  - except for the document class
+% Code lower down is more likely to be customised
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pdfminorversion=4
+\documentclass[landscape,a0b,final,a4resizeable]{include/a0poster}
+
+
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{morefloats}
+\usepackage[pdftex]{graphicx}
+\usepackage{rotating}
+\usepackage{amsmath, amsthm, amssymb, bm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+\usepackage{include/picins}
+\usepackage{tikz}
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+% \usepackage{algorithmic}
+% \algsetup{linenosize=\small}
+\usepackage{setspace}
+\usepackage[hypcap=false,font=small,labelfont=bf]{caption} 
+
+\usetikzlibrary{shapes.geometric,arrows,chains,matrix,positioning,scopes,calc}
+\tikzstyle{mybox} = [draw=white, rectangle]
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{blue}{rgb}{0,0,1}
+
+
+
+\usepackage{nicefrac}
+\newcommand{\vect}[1]{\underline{\smash{#1}}}
+\renewcommand{\v}[1]{\vect{#1}}
+\newcommand{\reals}{\mathds{R}}
+\newcommand{\sX}{\mathcal{X}}
+\newcommand{\sD}{\mathcal{D}}
+\newcommand{\br}{}%{^{\text{\textnormal{ r}}}}
+\newcommand{\cat}{^{\text{\textnormal{c}}}}
+
+\usepackage{dsfont}
+
+\input{include/preamble.sty}
+%\input{include/preamble2.sty}
+
+%\usepackage{tabularx}
+
+\input{include/jlposter.tex}
+
+
+\newcommand\transpose{{\textrm{\tiny{\sf{T}}}}}
+\newcommand{\note}[1]{}
+\newcommand{\hlinespace}{~\vspace*{-0.15cm}~\\\hline\\\vspace*{0.15cm}}
+\newcommand{\embeddingletter}{g}
+\newcommand{\bo}{{\sc bo}}
+%\newcommand{\gp}{{\sc gp}}
+\newcommand{\agp}{Arc \gp}
+
+
+
+\begin{document}
+\begin{poster}
+
+% Potentially add some space at the top of the poster
+\vspace{0\baselineskip}
+
+
+
+%%% Header
+\begin{center}
+\begin{pcolumn}{0.99}
+
+\newcommand{\logowidth}{0.06\textwidth}  % width mauna decomp
+
+\pbox{0.99\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=camdarkblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=white,gradmidpoint=1.0,framesep=1em}{
+%%% U Toronto Logo
+\hspace{2.3cm}
+\begin{minipage}[c][][b]{\logowidth}
+%  \begin{center}
+    \vspace{-.18in}
+    \includegraphics[width=8cm,trim=9em 0em 9em 0em, clip]{badges/toronto}
+   
+      \includegraphics{badges/uot_text.png}
+%University of Cambridge 
+%  \end{center}
+\end{minipage}
+% \hspace{0.3cm}
+% %
+% %
+% %%% Cambridge Logo
+% \begin{minipage}[c][][b]{\logowidth}
+% %  \begin{center}
+%     \vspace{.978in}
+%     \includegraphics[width=6cm]{badges/cambridgecrest}
+%     \includegraphics[width=6cm]{badges/unicamtext.pdf}
+% %University of Cambridge 
+% %  \end{center}
+% \end{minipage}
+%
+%
+%%% Title
+\begin{minipage}[c][9cm][c]{0.9\textwidth}
+  \begin{center}
+    \vspace{3.5cm}
+    {\sffamily \VeryHuge \textbf{Generating Class-conditional Images\\\vspace{5.0mm} with Gradient-based Inference}}\\[10mm]
+    {\huge\sffamily \Huge Bowen Xu, David Acuna, David Duvenaud\\[7.5mm]
+    \Large \texttt{\{xubo3, davidj, duvenaud\}@cs.toronto.edu}
+    }
+  \end{center}
+\end{minipage}
+%
+%
+% % Harvard
+% \begin{minipage}[c][][b]{\logowidth}
+%   \begin{flushright}
+% %    \includegraphics[width=6cm,angle=0]{badges/cambridgecrest}
+% %    \vspace{.1in}
+% %    \includegraphics[width=6cm,angle=0]{unicamtext.pdf}
+%     \includegraphics[width=8cm,trim=3.2em 0em 3.2em 3em, clip]{badges/harvard}
+% %University of Cambridge 
+%   \end{flushright}
+% \end{minipage}
+% %
+% \hspace{1cm}
+% 
+% \begin{minipage}[c][][b]{\logowidth}
+% %    \includegraphics[width=6cm,angle=0]{badges/cambridgecrest}
+% %    \vspace{.1in}
+% %    \includegraphics[width=6cm,angle=0]{unicamtext.pdf}
+%     \includegraphics[width=8cm,trim=0em 0em 0em 0em, clip]{badges/uni-freiburg}
+% \end{minipage}
+%
+% \hspace{1cm}
+% % 
+% \begin{minipage}[c][][b]{\logowidth}
+% %    \includegraphics[width=6cm,angle=0]{badges/cambridgecrest}
+% %    \vspace{.1in}
+% %    \includegraphics[width=6cm,angle=0]{unicamtext.pdf}
+%     \includegraphics[width=8cm,trim=0em 0em 0em 0em, clip]{badges/oxford}
+% \end{minipage}
+
+}
+\end{pcolumn}
+\end{center}
+
+\vspace*{2.5cm}
+
+\large
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Begin of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Begin of Multicols-Enviroment
+\begin{multicols}{3}
+%%% Abstract
+%\mysection{Summary}
+%We introduce a Gaussian process model of functions which are $\textit additive$.  An additive function is one which decomposes into a sum of low-dimensional functions, each depending on only a subset of the input variables. 
+%\begin{itemize}
+%\item Most clustering methods assume a parametric form for each cluster, i.e. Gaussian.
+%\item Our model is a Gaussian mixture that has been smoothly 'warped' to produce the observed clusters.
+%\item Our model defines a non-parametric distribution over cluster shapes.
+%\item Typically recovers a much smaller number of clusters, whose densities follow the contours of the data. 
+%\item Can be viewed as a non-parametric manifold learning algorithm which doesn't require the construction of a nearest-neighbours graph.
+%\end{itemize}
+%\hspace{3cm}&
+%\mysection{Motivation}
+%\mysection{Sums of Kernels Correspond to Sums of GPs}
+\mysection{Main idea}
+%
+% 
+\vspace{0.5in}
+% 
+% \begin{minipage}[c]{1\columnwidth}
+\begin{itemize}
+	\item Gradient descent on images is a promising approach to generating class-conditional images.
+	\item Produce high-resolution class-conditional images with crisp details and coherent overall structure.
+	 %  often produces unrepresentative super-stimuli.
+	\item Even better, we sample from $p(\textnormal{image} | \textnormal{class})$ using gradient-based MCMC methods.
+	\item This approach produces realistic and content-diverse class-conditional images.
+	% \item The number of architecture-dependent hyperparameters changes with different architectures.
+	\item Remove the need for \emph{ad-hoc} tweaks to the objective when longer iterations are introduced.
+\end{itemize}
+% \end{minipage}
+% \begin{minipage}[c]{0.35\columnwidth}
+% \begin{centering}
+% \begin{tabular}{c}
+% \input{tables/architecture-comparison} \\
+% %\textcolor{darkblue}{ [Rasmussen, 1999]}
+% \end{tabular}
+% \end{centering}
+% \end{minipage}
+
+\vspace{0.5in}
+
+\mysection{Previous Work}
+% 
+% approach, due to Nguyen et.\ al.\ \cite{Nguyen2016}, 
+A previous approach due to Nguyen et.\ al. uses gradient-based optimization of images to do approximate 
+% \emph{maximum a posteriori probability}
+ MAP estimation, synthesizing large (227 x 227) class-conditional images.\\
+% \begin{minipage}
+
+\begin{center} 
+  \centering
+  \includegraphics{figures/img}
+  % \caption{Architecture using the DGN and DNN.}
+  \label{fig:net}
+\end{center}
+
+\begin{itemize}
+\item An initial image is specified by a random vector $z \thicksim \mathcal{N}(0, I)$.
+ \item This is passed through a pre-trained image generation network $g_\theta(z)$.
+\item The generated image is fed into a pre-trained classification network.
+ \item The latent vector is then optimized using backpropagation.
+ % according to the gradient of the chosen class probability with respect to the image, multiplied by the gradient of the image with respect to the latent vector, using backpropagation.
+\end{itemize}
+
+\mysection{Our contribution}
+We use gradient-based MCMC to approximately sample from the class-conditional \\posterior:\\
+\begin{equation*}
+    \hat z \thicksim p(z|\textnormal{class}) \propto p(\textnormal{class} | g_\theta(z)) p(z) \qquad \textnormal{where} \qquad p(z) = \mathcal{N}(0, I)
+    %\qquad \textnormal{where} \qquad p(z | class) = p(g_\theta(z) | class)
+    % \label{eq:sampling}
+\end{equation*}
+\linebreak
+and $p(\textnormal{class} | g_\theta(z))$ is defined by a classifier neural network.\\
+
+We adopted:
+\begin{itemize}
+\item Hamiltonian Monte Carlo (HMC) 
+\item Metropolis-adjusted-Langevin-algorithm (MALA) 
+\end{itemize}
+% \subsection*{Algorithm}
+% \begin{algorithm}[H]
+% % \setstretch{1.02}
+%     % \caption{MAP with Clipping\cite{Nguyen2016}} %\label{evalgd}
+%     \label{alg:activation_maximization}
+%     \begin{algorithmic}[1]
+%          \State $z \thicksim N(0,I)$
+%          \For{ iterations }
+%          \State $g= \nabla log(p(\textnormal{class}|z)p(z))$
+%          \State \textbf{$z = z+\alpha g$}
+%          \State $z= clip(z)$
+%           \EndFor
+%       \end{algorithmic}
+% \end{algorithm}
+% \vspace{-0.05in}
+ 
+
+
+
+
+\newpage 
+
+\mysection{Experiments and Results}
+
+% to sample images from $p(\textnormal{image} | \textnormal{class})$
+% We use gradient-based MCMC to approximately sample from the class-conditional \\posterior:\\
+% \begin{equation*}
+%     \hat z \thicksim p(z|\textnormal{class}) \propto p(\textnormal{class} | g_\theta(z)) p(z) \qquad \textnormal{where} \qquad p(z) = \mathcal{N}(0, I)
+%     %\qquad \textnormal{where} \qquad p(z | class) = p(g_\theta(z) | class)
+%     % \label{eq:sampling}
+% \end{equation*}
+% \vspace{10.0cm}
+% \linebreak
+% and $p(\textnormal{class} | g_\theta(z))$ is defined by a classifier neural network.\\
+
+% We can build a kernel with these properties for each possibly irrelevant input dimension $i$ by {\textcolor{red}{embedding our points into a Euclidean space}}.  Specifically, we use the embedding
+%
+%To emphasize that we're in the real case, we explicitly denote the pseudometric as $d\br_i$ and the (pseudo-)isometry from $(\sX, d_i)$ to $\reals^2,d_\text{E}$ 
+%as $f\br_i$. For the definitions, recall that $\delta_i(\v{x})$ is true iff dimension $i$ is relevant given the instantiation of $i$'s ancestors in $\v{x}$.
+%
+%
+
+% \begin{equation*}
+% \embeddingletter_i\br(\v{x}) = \left\{\begin{array}{ll}
+% [0,0]^\transpose & \textrm{ if } \delta_i(\v{x}) = \textrm{ false }\\
+% \omega_i [\sin{\pi\rho_i\frac{x_i}{u_i-l_i}}, \cos{\pi\rho_i\frac{x_i}{u_i-l_i}}]^\transpose & \textrm{ otherwise.}\end{array}\right.
+% \end{equation*}
+% Where $\omega_i \in \mathbb{R}^+$ and $\rho_i \in [0,1]$.\hfill{}
+% \linebreak
+%
+%\begin{figure}
+%	\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top}}}]{figure}[\FBwidth]
+
+%\begin{table}
+%\begin{tabul\
+% \subsection*{Comparison}
+\begin{align*}
+% \input{figures/semicylinder}\label{fig:cylinder}
+% \begin{figure}[h]
+  % \centering
+  %\includegraphics[width=\textwidth]{ComparisonImagebyImage_wo_clipping}
+  \hspace{-2.0cm}
+  \includegraphics[width=32cm,keepaspectratio=false]{figures/comparison_final_transpose}
+  % [scale=0.5725]
+  % \caption{Images generated with MAP, MALA, and HMC.}
+  % \label{fig:robustness}
+\end{align*}
+
+
+ 
+
+
+
+
+\newpage
+\mysection{Diversity of Image Contents}
+	
+\begin{align*}
+% \input{figures/semicylinder}\label{fig:cylinder}
+% \begin{figure}[h]
+% 
+  %\includegraphics[width=\textwidth]{ComparisonImagebyImage_wo_clipping}
+   % \hspace{-1.0cm}
+   \hspace{0.8cm}
+  \includegraphics[width=33cm,keepaspectratio=false]{figures/moreRepresentative}
+  % [scale=0.5725]
+  % \caption{Images generated with MAP, MALA, and HMC.}
+  % \label{fig:robustness}
+\end{align*}
+
+
+
+\mysection{Advantages and Limitations}
+\begin{itemize}
+	\setlength\itemsep{0.4em}
+	\item[$+$] Produce high-resolution images with crisp details and coherent overall structure.
+	\item[$+$] MALA and HMC are able to generate more content-diverse images.
+	\item[$+$] If longer iterations are introduced clipping constraints are not required.
+	\item[$-$] Slow convergence of MCMC methods in high-dimensional data spaces.
+	\item[$-$] Small step sizes and high number of iterations adopted to improve the mixing rate.
+\end{itemize}
+% \begin{minipage}[c]{0.95\columnwidth}
+% %\begin{table}[h!]
+% %\caption{{\small \label{tab:nn_error}}}
+% %\label{tbl:nn_nmse}
+% \input{tables/mcmc-table.tex}
+ 
+
+
+
+\vspace{1.cm}
+\mysection{Future Work}
+	\begin{itemize}
+		\setlength\itemsep{0.4em}
+		\item Use the Hamiltonian Variational Inference (HVI) model.
+		\item Generate images from text.
+		\item Generate other media such as sound and text.
+ 	\end{itemize}
+% %\begin{figure}[t!]
+% 	\centering
+% %	\begin{subfigure}[]{0.3\textwidth}
+% \begin{tabular}{cc}
+% \includegraphics[width=0.45\columnwidth]{figures/mnist.pdf} &
+% \includegraphics[width=0.45\columnwidth]{figures/cifar10.pdf} \\
+% MNIST &  CIFAR-10
+% \end{tabular}		
+
+
+% \begin{tabular}{c}
+% 		\includegraphics[width=0.45\columnwidth]{figures/fevals_per_layer.pdf} \\
+% Architectures searched
+% \end{tabular}
+		
+%		\label{fig:proparchs}
+%	\end{subfigure}
+%	\caption{Bayesian optimization results using the arc kernel.}
+%	\label{fig:arcbo}
+%\vspace{-0.3cm}
+%\end{figure}
+
+\vspace{1.cm}
+% \hspace{-1.0cm}
+
+\mysection{Bibliography}
+ \begin{center}
+\begin{minipage}[c]{0.2\columnwidth}
+  \includegraphics[width=8cm]{badges/toronto}
+  \captionsetup{labelformat=empty}
+  \captionof{figure}{Bowen Xu}
+\end{minipage}
+\begin{minipage}[c]{0.2\columnwidth}
+  \includegraphics[width=8cm]{badges/toronto}
+  \captionsetup{labelformat=empty}
+  \captionof{figure}{David Acuna}
+\end{minipage}
+\begin{minipage}[c]{0.2\columnwidth}
+  \includegraphics[width=8cm]{badges/toronto}
+  \captionsetup{labelformat=empty}
+  \captionof{figure}{David Duvenaud}
+\end{minipage}
+\end{center}
+ 
+%\paragraph{Code}
+%Code available at \texttt{http://???}
+%
+%Paper available at \texttt{http://???}
+ 
+
+\end{multicols}
+\end{poster}
+\end{document}
+
