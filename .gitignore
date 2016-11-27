@@ -3,7 +3,6 @@
 *.log
 *.out
 *.gz
-*.pdf
 *.fdb_latexmk
 *.ps
 *.DS_Store
