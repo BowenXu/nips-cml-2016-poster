@@ -174,7 +174,7 @@
 % \begin{minipage}[c]{1\columnwidth}
 \begin{itemize}
 	\item Gradient descent on images is a promising approach to generating class-conditional images.
-	\item This methods produces high-resolution class-conditional images with crisp details and coherent overall structure.
+	\item This method produces high-resolution class-conditional images with crisp details and coherent overall structure.
 	 %  often produces unrepresentative super-stimuli.
 	\item Even better, we sample from $p(\textnormal{image} | \textnormal{class})$ using gradient-based MCMC methods.
 	\item Our approach produces realistic and content-diverse class-conditional images.
@@ -224,7 +224,7 @@ We use gradient-based MCMC methods to approximately sample from the class-condit
     % \label{eq:sampling}
 \end{equation*}
 \linebreak
-and $p(\textnormal{class} | g_\theta(z))$ is defined by a classifier neural network.\\
+and $p(\textnormal{class} | g_\theta(z))$ is the classification network.\\
 
 We adopted:
 \begin{itemize}
@@ -266,7 +266,7 @@ We adopted:
 % 
 \mysection{Automatically Evaluating Image Quality}
 
-A discriminator \cite{Radford2015}, trained on ImageNet, outputs the probability of an image being natural versus synthesized.\\
+We use a discriminator \cite{Radford2015}, trained on ImageNet, to output the probability of an image being natural versus synthesized.\\
 
 \begin{minipage}[c]{1\columnwidth}
         \centering
@@ -307,7 +307,7 @@ A discriminator \cite{Radford2015}, trained on ImageNet, outputs the probability
 	\item[$+$] Produces high-resolution images with crisp details and coherent overall structure.
 	\item[$+$] Generates more content-diverse images.
 	\item[$+$] Removes the need for clipping when longer iterations are introduced.
-	\item[$+$] If longer iterations are introduced clipping constraints are not required.
+	% \item[$+$] If longer iterations are introduced clipping constraints are not required.
 	\item[$-$] Slow convergence for high-dimensional data spaces.
 	\item[$-$] Small step sizes and longer iterations are required.
 \end{itemize}
@@ -324,7 +324,7 @@ A discriminator \cite{Radford2015}, trained on ImageNet, outputs the probability
 \mysection{Future Work}
 	\begin{itemize}
 		\setlength\itemsep{0.4em}
-		\item Use the Hamiltonian Variational Inference (HVI) model.
+		\item Use the Hamiltonian Variational Inference (HVI) model \cite{2014arXiv1410.6460S}.
 		\item Generate images from text.
 		\item Generate other media such as sound and video.
  	\end{itemize}
