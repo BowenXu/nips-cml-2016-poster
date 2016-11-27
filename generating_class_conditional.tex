@@ -174,12 +174,12 @@
 % \begin{minipage}[c]{1\columnwidth}
 \begin{itemize}
 	\item Gradient descent on images is a promising approach to generating class-conditional images.
-	\item Produce high-resolution class-conditional images with crisp details and coherent overall structure.
+	\item This methods produces high-resolution class-conditional images with crisp details and coherent overall structure.
 	 %  often produces unrepresentative super-stimuli.
 	\item Even better, we sample from $p(\textnormal{image} | \textnormal{class})$ using gradient-based MCMC methods.
-	\item This approach produces realistic and content-diverse class-conditional images.
+	\item Our approach produces realistic and content-diverse class-conditional images.
 	% \item The number of architecture-dependent hyperparameters changes with different architectures.
-	\item Remove the need for \emph{ad-hoc} tweaks to the objective when longer iterations are introduced.
+	\item Our method removes the need for \emph{ad-hoc} tweaks to the objective when longer iterations are introduced.
 \end{itemize}
 % \end{minipage}
 % \begin{minipage}[c]{0.35\columnwidth}
@@ -210,14 +210,14 @@ A previous approach due to Nguyen et.\ al.\ \cite{Nguyen2016} uses gradient-base
 
 \begin{itemize}
 \item An initial image is specified by a random vector $z \thicksim \mathcal{N}(0, I)$.
- \item This is passed through a pre-trained image generation network $g_\theta(z)$.
+ \item This vector is passed through a pre-trained image generation network $g_\theta(z)$.
 \item The generated image is fed into a pre-trained classification network.
  \item The latent vector is then optimized using backpropagation.
  % according to the gradient of the chosen class probability with respect to the image, multiplied by the gradient of the image with respect to the latent vector, using backpropagation.
 \end{itemize}
 \vspace{1cm}
 \mysection{Our contribution}
-We use gradient-based MCMC to approximately sample from the class-conditional \\posterior:\\
+We use gradient-based MCMC methods to approximately sample from the class-conditional posterior:\\
 \begin{equation*}
     \hat z \thicksim p(z|\textnormal{class}) \propto p(\textnormal{class} | g_\theta(z)) p(z) \qquad \textnormal{where} \qquad p(z) = \mathcal{N}(0, I)
     %\qquad \textnormal{where} \qquad p(z | class) = p(g_\theta(z) | class)
@@ -304,11 +304,12 @@ A discriminator \cite{Radford2015}, trained on ImageNet, outputs the probability
 \mysection{Advantages and Limitations}
 \begin{itemize}
 	\setlength\itemsep{0.4em}
-	\item[$+$] Produce high-resolution images with crisp details and coherent overall structure.
-	\item[$+$] MALA and HMC are able to generate more content-diverse images.
+	\item[$+$] Produces high-resolution images with crisp details and coherent overall structure.
+	\item[$+$] Generates more content-diverse images.
+	\item[$+$] Removes the need for clipping when longer iterations are introduced.
 	\item[$+$] If longer iterations are introduced clipping constraints are not required.
-	\item[$-$] Slow convergence of MCMC methods in high-dimensional data spaces.
-	\item[$-$] Small step sizes and high number of iterations adopted to improve the mixing rate.
+	\item[$-$] Slow convergence for high-dimensional data spaces.
+	\item[$-$] Small step sizes and longer iterations are required.
 \end{itemize}
 % \begin{minipage}[c]{0.95\columnwidth}
 % %\begin{table}[h!]
