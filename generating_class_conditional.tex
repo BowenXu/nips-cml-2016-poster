@@ -90,7 +90,7 @@
 %  \begin{center}
     \vspace{-.18in}
     \includegraphics[width=8cm,trim=9em 0em 9em 0em, clip]{badges/toronto}
-   
+   	\hspace{35cm}
       \includegraphics{badges/uot_text.png}
 %University of Cambridge 
 %  \end{center}
@@ -228,7 +228,7 @@ A previous approach due to Nguyen et.\ al. uses gradient-based optimization of i
  \item The latent vector is then optimized using backpropagation.
  % according to the gradient of the chosen class probability with respect to the image, multiplied by the gradient of the image with respect to the latent vector, using backpropagation.
 \end{itemize}
-
+\vspace{1cm}
 \mysection{Our contribution}
 We use gradient-based MCMC to approximately sample from the class-conditional \\posterior:\\
 \begin{equation*}
@@ -261,45 +261,10 @@ We adopted:
 % \vspace{-0.05in}
  
 
-
-
-
 \newpage 
 
 \mysection{Experiments and Results}
-
-% to sample images from $p(\textnormal{image} | \textnormal{class})$
-% We use gradient-based MCMC to approximately sample from the class-conditional \\posterior:\\
-% \begin{equation*}
-%     \hat z \thicksim p(z|\textnormal{class}) \propto p(\textnormal{class} | g_\theta(z)) p(z) \qquad \textnormal{where} \qquad p(z) = \mathcal{N}(0, I)
-%     %\qquad \textnormal{where} \qquad p(z | class) = p(g_\theta(z) | class)
-%     % \label{eq:sampling}
-% \end{equation*}
-% \vspace{10.0cm}
-% \linebreak
-% and $p(\textnormal{class} | g_\theta(z))$ is defined by a classifier neural network.\\
-
-% We can build a kernel with these properties for each possibly irrelevant input dimension $i$ by {\textcolor{red}{embedding our points into a Euclidean space}}.  Specifically, we use the embedding
-%
-%To emphasize that we're in the real case, we explicitly denote the pseudometric as $d\br_i$ and the (pseudo-)isometry from $(\sX, d_i)$ to $\reals^2,d_\text{E}$ 
-%as $f\br_i$. For the definitions, recall that $\delta_i(\v{x})$ is true iff dimension $i$ is relevant given the instantiation of $i$'s ancestors in $\v{x}$.
-%
-%
-
-% \begin{equation*}
-% \embeddingletter_i\br(\v{x}) = \left\{\begin{array}{ll}
-% [0,0]^\transpose & \textrm{ if } \delta_i(\v{x}) = \textrm{ false }\\
-% \omega_i [\sin{\pi\rho_i\frac{x_i}{u_i-l_i}}, \cos{\pi\rho_i\frac{x_i}{u_i-l_i}}]^\transpose & \textrm{ otherwise.}\end{array}\right.
-% \end{equation*}
-% Where $\omega_i \in \mathbb{R}^+$ and $\rho_i \in [0,1]$.\hfill{}
-% \linebreak
-%
-%\begin{figure}
-%	\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,top}}}]{figure}[\FBwidth]
-
-%\begin{table}
-%\begin{tabul\
-% \subsection*{Comparison}
+ \vspace{-0.2cm}
 \begin{align*}
 % \input{figures/semicylinder}\label{fig:cylinder}
 % \begin{figure}[h]
@@ -311,10 +276,23 @@ We adopted:
   % \caption{Images generated with MAP, MALA, and HMC.}
   % \label{fig:robustness}
 \end{align*}
+% 
+\mysection{Automatically Evaluating Image Quality}
 
+A discriminator, trained on ImageNet, outputs the probability of an image being natural versus synthesized.\\
 
- 
-
+\begin{minipage}[c]{1\columnwidth}
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{ ccccc}
+            %\hline
+              & MAP with Clipping  & MALA with Clipping & MALA & HMC\\
+            \midrule 
+            Average log-probability & -6.00 & {\bf -5.53} & -9.79 & -7.96
+		\end{tabular}}
+        % \caption{Average log-probability of synthetic images being real.}
+        \label{table:dt_test}
+\end{minipage}
 
 
 
@@ -388,19 +366,22 @@ We adopted:
 % \hspace{-1.0cm}
 
 \mysection{Bibliography}
+\vspace{1.5cm}
  \begin{center}
 \begin{minipage}[c]{0.2\columnwidth}
-  \includegraphics[width=8cm]{badges/toronto}
+  \includegraphics[width=8cm]{photos/xu}
   \captionsetup{labelformat=empty}
   \captionof{figure}{Bowen Xu}
 \end{minipage}
+\hspace{0.5cm}
 \begin{minipage}[c]{0.2\columnwidth}
-  \includegraphics[width=8cm]{badges/toronto}
+  \includegraphics[width=8cm]{photos/acuna}
   \captionsetup{labelformat=empty}
   \captionof{figure}{David Acuna}
 \end{minipage}
+\hspace{0.5cm}
 \begin{minipage}[c]{0.2\columnwidth}
-  \includegraphics[width=8cm]{badges/toronto}
+  \includegraphics[width=8cm]{photos/duvenaud.png}
   \captionsetup{labelformat=empty}
   \captionof{figure}{David Duvenaud}
 \end{minipage}

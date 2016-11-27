@@ -42,7 +42,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\definecolor{camlightblue}{rgb}{0.601 , 0.8, 1}
+\definecolor{camlightblue}{RGB}{0  , 47, 101}
 \definecolor{camdarkblue}{rgb}{0, 0.203, 0.402}
 \definecolor{camred}{rgb}{1, 0.203, 0}
 \definecolor{camyellow}{rgb}{1, 0.8, 0}
@@ -72,8 +72,8 @@
 \tikzstyle{mysection} = [rectangle, 
 									draw=none, 
 									shade, 
-									outer color=camlightblue!30,
-									inner color=camlightblue!30,
+									outer color=camlightblue,
+									inner color=camlightblue,
 									text width=0.965\columnwidth,
 									text centered,
 									rounded corners=20pt,
@@ -83,7 +83,7 @@
 {
 \begin{center}
   \begin{tikzpicture}
-    \node[mysection] {\sffamily\bfseries\LARGE#1};
+    \node[mysection] {\color[rgb]{1,1,1}\sffamily\bfseries\LARGE#1};
   \end{tikzpicture}
 \end{center}
 }
