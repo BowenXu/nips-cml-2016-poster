@@ -32,7 +32,7 @@
 % \algsetup{linenosize=\small}
 \usepackage{setspace}
 \usepackage[hypcap=false,font=small,labelfont=bf]{caption} 
-
+\usepackage{makecell}
 \usetikzlibrary{shapes.geometric,arrows,chains,matrix,positioning,scopes,calc}
 \tikzstyle{mybox} = [draw=white, rectangle]
 \definecolor{darkblue}{rgb}{0,0.08,0.45}
@@ -273,7 +273,7 @@ We use a discriminator \cite{Radford2015}, trained on ImageNet, to output the pr
         \resizebox{\textwidth}{!}{
         \begin{tabular}{ ccccc}
             %\hline
-              & MAP with Clipping  & MALA with Clipping & MALA & HMC\\
+              & \makecell{MAP with\\ class-specific regularization}  & \makecell{MALA with\\ class-specific regularization} & MALA & HMC\\
             \midrule 
             Average log-probability & -6.00 & {\bf -5.53} & -9.79 & -7.96
 		\end{tabular}}
@@ -306,9 +306,9 @@ We use a discriminator \cite{Radford2015}, trained on ImageNet, to output the pr
 	\setlength\itemsep{0.4em}
 	\item[$+$] Produces high-resolution images with crisp details and coherent overall structure.
 	\item[$+$] Generates more content-diverse images.
-	\item[$+$] Removes the need for clipping when longer iterations are introduced.
+	\item[$+$] Removes the need for class-specific regularization when longer iterations are introduced.
 	% \item[$+$] If longer iterations are introduced clipping constraints are not required.
-	\item[$-$] Slow convergence for high-dimensional data spaces.
+	% \item[$-$] Slow convergence for high-dimensional data spaces.
 	\item[$-$] Small step sizes and longer iterations are required.
 \end{itemize}
 % \begin{minipage}[c]{0.95\columnwidth}
